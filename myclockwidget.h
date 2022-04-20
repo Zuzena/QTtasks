@@ -17,7 +17,7 @@ public:
     void drawHand(QPainter*, int);
     void toggleMode(bool isTimeCurrent){current=isTimeCurrent; qDebug()<<current;}
 
-    bool current;
+    bool current=true;
 signals:
 
 public slots:

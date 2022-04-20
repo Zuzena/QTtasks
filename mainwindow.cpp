@@ -10,7 +10,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->Reset,SIGNAL(released()),this,SLOT(reset()));
     connect(ui->SetDateTime,SIGNAL(released()),this,SLOT(customDateTime()));
 
-    myClock.paintEvent(nullptr);
+    //myClock.paintEvent(nullptr);
 }
 
 MainWindow::~MainWindow()
@@ -19,10 +19,10 @@ MainWindow::~MainWindow()
 }
 
 void MainWindow::reset(){
-   myClock.toggleMode(true);
+  ui->widget->toggleMode(true);
 }
 
 void MainWindow::customDateTime(){
-    myClock.toggleMode(false);
+  ui->widget->toggleMode(false);
 }
 

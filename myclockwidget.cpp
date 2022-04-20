@@ -24,29 +24,29 @@ void myClockWidget::paintEvent(QPaintEvent*){
 
     drawClockFace(&painter);
 
-    QDateTime datetime = QDateTime::currentDateTime();
+//    QDateTime datetime = QDateTime::currentDateTime();
+//            setDate(&painter, datetime.date().day(), datetime.date().month());
+//            QTime time = QTime::currentTime();
+//            setTime(&painter, time.hour(), time.minute(), time.second());
+
+    if(current==true){
+        QDateTime datetime = QDateTime::currentDateTime();
             setDate(&painter, datetime.date().day(), datetime.date().month());
             QTime time = QTime::currentTime();
             setTime(&painter, time.hour(), time.minute(), time.second());
+    }
+    if(current==false){
+        QTimeEdit* timeEdit = new QTimeEdit();
+        QTime CTime = timeEdit->time();
+        //QTime timeNow = QTime::currentTime();
+        int offset= QTime::currentTime().msecsTo(CTime)/1000;
+        QTime time= QTime::currentTime().addSecs(offset);
+        setTime(&painter, time.hour(), time.minute(), time.second());
 
-//    if(current==true){
-//        QDateTime datetime = QDateTime::currentDateTime();
-    //        setDate(&painter, datetime.date().day(), datetime.date().month());
-    //        QTime time = QTime::currentTime();
-    //        setTime(&painter, time.hour(), time.minute(), time.second());
-//    }
-//    if(current==false){
-//        QTimeEdit* timeEdit = new QTimeEdit();
-//        QTime CTime = timeEdit->time();
-//        //QTime timeNow = QTime::currentTime();
-//        int offset= QTime::currentTime().msecsTo(CTime)/1000;
-//        QTime time= QTime::currentTime().addSecs(offset);
-//        setTime(&painter, time.hour(), time.minute(), time.second());
-
-//        QDateEdit* dateEdit = new QDateEdit();
-//        QDate CDate = dateEdit->date();
-//        setDate(&painter, CDate.day(), CDate.month());
-//    }
+        QDateEdit* dateEdit = new QDateEdit();
+        QDate CDate = dateEdit->date();
+        setDate(&painter, CDate.day(), CDate.month());
+    }
 
 
     /*painter.drawLine(0,0, 0, minuteHand);
